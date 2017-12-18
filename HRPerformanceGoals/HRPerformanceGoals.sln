@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRPerformanceGoals", "HRPerformanceGoals\HRPerformanceGoals.csproj", "{A6C91661-0C86-4FE4-B86E-BE42E8789FDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C91661-0C86-4FE4-B86E-BE42E8789FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C91661-0C86-4FE4-B86E-BE42E8789FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C91661-0C86-4FE4-B86E-BE42E8789FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C91661-0C86-4FE4-B86E-BE42E8789FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

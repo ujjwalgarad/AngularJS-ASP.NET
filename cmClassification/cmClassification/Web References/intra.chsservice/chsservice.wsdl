@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetPersonProfileByLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonProfileByLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonProfileByLoginResult" type="tns:PersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TKID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FriendlyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeFloor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartmentCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsContractor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPersonProfileByTkid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Tkid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonProfileByTkidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonProfileByTkidResult" type="tns:PersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEmployees">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllEmployeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEmployeesResult" type="tns:ArrayOfPersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPersonVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersonVO" nillable="true" type="tns:PersonVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllAttorneys">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllAttorneysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAttorneysResult" type="tns:ArrayOfPersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPartners">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPartnersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPartnersResult" type="tns:ArrayOfPersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMTPEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="tns:EmailVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmailVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cc" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bcc" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachment" type="tns:ArrayOfFileVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFileVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FileVO" nillable="true" type="tns:FileVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FileVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="uplFile" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="uplFileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="uplFileExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="uplFilePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendSMTPEmailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendSMTPEmailOutgoing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="tns:EmailVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMTPEmailOutgoingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCountries">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCountriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCountriesResult" type="tns:ArrayOfCountryVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCountryVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CountryVO" nillable="true" type="tns:CountryVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CountryVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CountryAbbr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllCountryStates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountryAbbr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCountryStatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCountryStatesResult" type="tns:ArrayOfStateVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateVO" nillable="true" type="tns:StateVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AbbrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryAbbr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllEliteClientType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllEliteClientTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEliteClientTypeResult" type="tns:ArrayOfEliteClientTypeVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEliteClientTypeVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EliteClientTypeVO" nillable="true" type="tns:EliteClientTypeVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EliteClientTypeVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BizType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BizDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEliteClientList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEliteClientListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEliteClientListResult" type="tns:ArrayOfEliteClientVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEliteClientVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EliteClientVO" nillable="true" type="tns:EliteClientVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EliteClientVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientNameConti" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address56" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientManagementAtty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientOriginatingAtty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientStory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MatterDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsClientConfidential" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEliteClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEliteClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEliteClientResult" type="tns:EliteClientVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepartments">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDepartmentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepartmentsResult" type="tns:ArrayOfDepartmentVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDepartmentVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DepartmentVO" nillable="true" type="tns:DepartmentVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DepartmentVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DeptCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDepartmentPartnerByDeptCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeptCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepartmentPartnerByDeptCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepartmentPartnerByDeptCodeResult" type="tns:ArrayOfPersonVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPractriceAreaByDeptCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeptCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPractriceAreaByDeptCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPractriceAreaByDeptCodeResult" type="tns:ArrayOfPracticeAreaVO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPracticeAreaVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PracticeAreaVO" nillable="true" type="tns:PracticeAreaVO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PracticeAreaVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TrackAppUsage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="place" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackAppUsageResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPersonProfileByLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonProfileByLogin" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonProfileByLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonProfileByLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonProfileByTkidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonProfileByTkid" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonProfileByTkidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonProfileByTkidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEmployeesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEmployees" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEmployeesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAttorneysSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAttorneys" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAttorneysSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAttorneysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPartnersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPartners" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPartnersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPartnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMTPEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMTPEmail" />
+  </wsdl:message>
+  <wsdl:message name="SendSMTPEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMTPEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMTPEmailOutgoingSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMTPEmailOutgoing" />
+  </wsdl:message>
+  <wsdl:message name="SendSMTPEmailOutgoingSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMTPEmailOutgoingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCountries" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountryStatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCountryStates" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountryStatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCountryStatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEliteClientTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEliteClientType" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEliteClientTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEliteClientTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEliteClientListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEliteClientList" />
+  </wsdl:message>
+  <wsdl:message name="GetEliteClientListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEliteClientListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEliteClientSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEliteClient" />
+  </wsdl:message>
+  <wsdl:message name="GetEliteClientSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEliteClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepartments" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentPartnerByDeptCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepartmentPartnerByDeptCode" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentPartnerByDeptCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepartmentPartnerByDeptCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPractriceAreaByDeptCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPractriceAreaByDeptCode" />
+  </wsdl:message>
+  <wsdl:message name="GetPractriceAreaByDeptCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPractriceAreaByDeptCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TrackAppUsageSoapIn">
+    <wsdl:part name="parameters" element="tns:TrackAppUsage" />
+  </wsdl:message>
+  <wsdl:message name="TrackAppUsageSoapOut">
+    <wsdl:part name="parameters" element="tns:TrackAppUsageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CHSServiceSoap">
+    <wsdl:operation name="GetPersonProfileByLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Choate person profile By Network Login.</wsdl:documentation>
+      <wsdl:input message="tns:GetPersonProfileByLoginSoapIn" />
+      <wsdl:output message="tns:GetPersonProfileByLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonProfileByTkid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Choate person profile By Tkid.</wsdl:documentation>
+      <wsdl:input message="tns:GetPersonProfileByTkidSoapIn" />
+      <wsdl:output message="tns:GetPersonProfileByTkidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all choate employees, including contractors</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEmployeesSoapIn" />
+      <wsdl:output message="tns:GetAllEmployeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAttorneys">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all choate attorneys, including contractors</wsdl:documentation>
+      <wsdl:input message="tns:GetAllAttorneysSoapIn" />
+      <wsdl:output message="tns:GetAllAttorneysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all choate partners</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPartnersSoapIn" />
+      <wsdl:output message="tns:GetAllPartnersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send a SMTP email.</wsdl:documentation>
+      <wsdl:input message="tns:SendSMTPEmailSoapIn" />
+      <wsdl:output message="tns:SendSMTPEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmailOutgoing">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send a SMTP email to outside of firewall.  The 'email From' MUST be defined in the SMTP server.</wsdl:documentation>
+      <wsdl:input message="tns:SendSMTPEmailOutgoingSoapIn" />
+      <wsdl:output message="tns:SendSMTPEmailOutgoingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Countries.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllCountriesSoapIn" />
+      <wsdl:output message="tns:GetAllCountriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountryStates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All states in a country.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllCountryStatesSoapIn" />
+      <wsdl:output message="tns:GetAllCountryStatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEliteClientType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Elite client type.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEliteClientTypeSoapIn" />
+      <wsdl:output message="tns:GetAllEliteClientTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClientList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Elite clients.</wsdl:documentation>
+      <wsdl:input message="tns:GetEliteClientListSoapIn" />
+      <wsdl:output message="tns:GetEliteClientListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get elite client.</wsdl:documentation>
+      <wsdl:input message="tns:GetEliteClientSoapIn" />
+      <wsdl:output message="tns:GetEliteClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Departments</wsdl:documentation>
+      <wsdl:input message="tns:GetDepartmentsSoapIn" />
+      <wsdl:output message="tns:GetDepartmentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentPartnerByDeptCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Partners of a Department</wsdl:documentation>
+      <wsdl:input message="tns:GetDepartmentPartnerByDeptCodeSoapIn" />
+      <wsdl:output message="tns:GetDepartmentPartnerByDeptCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPractriceAreaByDeptCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Practice Area of Dept Code</wsdl:documentation>
+      <wsdl:input message="tns:GetPractriceAreaByDeptCodeSoapIn" />
+      <wsdl:output message="tns:GetPractriceAreaByDeptCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrackAppUsage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Track application usage</wsdl:documentation>
+      <wsdl:input message="tns:TrackAppUsageSoapIn" />
+      <wsdl:output message="tns:TrackAppUsageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CHSServiceSoap" type="tns:CHSServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPersonProfileByLogin">
+      <soap:operation soapAction="http://tempuri.org/GetPersonProfileByLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonProfileByTkid">
+      <soap:operation soapAction="http://tempuri.org/GetPersonProfileByTkid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <soap:operation soapAction="http://tempuri.org/GetAllEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAttorneys">
+      <soap:operation soapAction="http://tempuri.org/GetAllAttorneys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <soap:operation soapAction="http://tempuri.org/GetAllPartners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmail">
+      <soap:operation soapAction="http://tempuri.org/SendSMTPEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmailOutgoing">
+      <soap:operation soapAction="http://tempuri.org/SendSMTPEmailOutgoing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <soap:operation soapAction="http://tempuri.org/GetAllCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountryStates">
+      <soap:operation soapAction="http://tempuri.org/GetAllCountryStates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEliteClientType">
+      <soap:operation soapAction="http://tempuri.org/GetAllEliteClientType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClientList">
+      <soap:operation soapAction="http://tempuri.org/GetEliteClientList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClient">
+      <soap:operation soapAction="http://tempuri.org/GetEliteClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartments">
+      <soap:operation soapAction="http://tempuri.org/GetDepartments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentPartnerByDeptCode">
+      <soap:operation soapAction="http://tempuri.org/GetDepartmentPartnerByDeptCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPractriceAreaByDeptCode">
+      <soap:operation soapAction="http://tempuri.org/GetPractriceAreaByDeptCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrackAppUsage">
+      <soap:operation soapAction="http://tempuri.org/TrackAppUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CHSServiceSoap12" type="tns:CHSServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPersonProfileByLogin">
+      <soap12:operation soapAction="http://tempuri.org/GetPersonProfileByLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonProfileByTkid">
+      <soap12:operation soapAction="http://tempuri.org/GetPersonProfileByTkid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEmployees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAttorneys">
+      <soap12:operation soapAction="http://tempuri.org/GetAllAttorneys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPartners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmail">
+      <soap12:operation soapAction="http://tempuri.org/SendSMTPEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMTPEmailOutgoing">
+      <soap12:operation soapAction="http://tempuri.org/SendSMTPEmailOutgoing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountries">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCountries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountryStates">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCountryStates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEliteClientType">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEliteClientType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClientList">
+      <soap12:operation soapAction="http://tempuri.org/GetEliteClientList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEliteClient">
+      <soap12:operation soapAction="http://tempuri.org/GetEliteClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartments">
+      <soap12:operation soapAction="http://tempuri.org/GetDepartments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentPartnerByDeptCode">
+      <soap12:operation soapAction="http://tempuri.org/GetDepartmentPartnerByDeptCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPractriceAreaByDeptCode">
+      <soap12:operation soapAction="http://tempuri.org/GetPractriceAreaByDeptCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrackAppUsage">
+      <soap12:operation soapAction="http://tempuri.org/TrackAppUsage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CHSService">
+    <wsdl:port name="CHSServiceSoap" binding="tns:CHSServiceSoap">
+      <soap:address location="http://intra/ChoateAppServices/chsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CHSServiceSoap12" binding="tns:CHSServiceSoap12">
+      <soap12:address location="http://intra/ChoateAppServices/chsservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

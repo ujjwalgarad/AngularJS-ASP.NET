@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86311EE8-B6B0-40F2-A8D2-3711BB28722C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cmClassification</RootNamespace>
+    <AssemblyName>cmClassification</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\tree.css" />
+    <Content Include="editor.aspx" />
+    <Content Include="js\ng-dnd-ctrl.js" />
+    <Content Include="js\ng-editor-ctrl.js" />
+    <Content Include="js\ng-editor2-ctrl.js" />
+    <Content Include="js\ng-viewer-ctrl.js" />
+    <Content Include="node_modules\angular-ivh-treeview\dist\ivh-treeview-theme-basic.css" />
+    <Content Include="node_modules\angular-ivh-treeview\dist\ivh-treeview.css" />
+    <Content Include="node_modules\angular-ivh-treeview\dist\ivh-treeview.js" />
+    <Content Include="node_modules\angular-ivh-treeview\dist\ivh-treeview.min.css" />
+    <Content Include="node_modules\angular-ivh-treeview\dist\ivh-treeview.min.js" />
+    <Content Include="node_modules\angular-ivh-treeview\gruntfile.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\constants\ivh-treeview-interpolate-end-symbol.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\constants\ivh-treeview-interpolate-start-symbol.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-checkbox-helper.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-checkbox.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-children.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-node.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-toggle.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview-twistie.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\directives\ivh-treeview.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\filters\ivh-treeview-as-array.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\module.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\services\ivh-treeview-bfs.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\services\ivh-treeview-compiler.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\services\ivh-treeview-mgr.js" />
+    <Content Include="node_modules\angular-ivh-treeview\src\scripts\services\ivh-treeview-options.js" />
+    <Content Include="node_modules\angular-ivh-treeview\test\spec\directives\ivh-treeview-custom-templates.js" />
+    <Content Include="node_modules\angular-ivh-treeview\test\spec\directives\ivh-treeview.js" />
+    <Content Include="node_modules\angular-ivh-treeview\test\spec\services\ivh-treeview-bfs.js" />
+    <Content Include="node_modules\angular-ivh-treeview\test\spec\services\ivh-treeview-mgr.js" />
+    <Content Include="node_modules\angular-ivh-treeview\test\spec\services\ivh-treeview-options.js" />
+    <Content Include="node_modules\angular-lodash\angular-lodash.js" />
+    <Content Include="node_modules\angular-lodash\test\apiSpec.js" />
+    <Content Include="node_modules\angular-lodash\test\filterSpec.js" />
+    <Content Include="node_modules\angular-lodash\test\ngFilterSpec.js" />
+    <Content Include="packages.config" />
+    <Content Include="Site1.Master" />
+    <Content Include="viewer.aspx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="node_modules\angular-ivh-treeview\.editorconfig" />
+    <Content Include="node_modules\angular-ivh-treeview\.jscsrc" />
+    <Content Include="node_modules\angular-ivh-treeview\.jshintrc" />
+    <Content Include="node_modules\angular-ivh-treeview\.npmignore" />
+    <Content Include="node_modules\angular-ivh-treeview\.travis.yml" />
+    <Content Include="node_modules\angular-ivh-treeview\bower.json" />
+    <Content Include="node_modules\angular-ivh-treeview\CONTRIBUTING.md" />
+    <Content Include="node_modules\angular-ivh-treeview\docs\templates-and-skins.md" />
+    <Content Include="node_modules\angular-ivh-treeview\LICENSE-MIT" />
+    <Content Include="node_modules\angular-ivh-treeview\MIGRATING.md" />
+    <Content Include="node_modules\angular-ivh-treeview\package.json" />
+    <Content Include="node_modules\angular-ivh-treeview\README.md" />
+    <Content Include="node_modules\angular-ivh-treeview\src\styles\ivh-treeview-theme-basic.less" />
+    <Content Include="node_modules\angular-ivh-treeview\src\styles\ivh-treeview.less" />
+    <Content Include="node_modules\angular-lodash\.bowerrc" />
+    <Content Include="node_modules\angular-lodash\.jshintrc" />
+    <Content Include="node_modules\angular-lodash\.npmignore" />
+    <Content Include="node_modules\angular-lodash\bower.json" />
+    <Content Include="node_modules\angular-lodash\LICENSE" />
+    <Content Include="node_modules\angular-lodash\package.json" />
+    <Content Include="node_modules\angular-lodash\README.md" />
+    <None Include="Properties\PublishProfiles\Pro.pubxml" />
+    <None Include="Web References\intra.chsservice\chsservice.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\app.css" />
+    <Content Include="default.aspx" />
+    <Content Include="js\ng-app.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\intra.chsservice\chsservice.disco" />
+    <Content Include="js\ng-cmClass-ctrl.js" />
+    <Content Include="js\ng-services.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web References\intra.chsservice\CountryVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\DepartmentVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\EliteClientTypeVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\EliteClientVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\PersonVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\PracticeAreaVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\intra.chsservice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\intra.chsservice\StateVO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editor.aspx.cs">
+      <DependentUpon>editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editor.aspx.designer.cs">
+      <DependentUpon>editor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="objects\BadgeVO.cs" />
+    <Compile Include="objects\ClientVO.cs" />
+    <Compile Include="objects\MatterVO.cs" />
+    <Compile Include="objects\MiniBadgeVO.cs" />
+    <Compile Include="objects\PoolVO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="viewer.aspx.cs">
+      <DependentUpon>viewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewer.aspx.designer.cs">
+      <DependentUpon>viewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\intra.chsservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://intra/ChoateAppServices/chsservice.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\intra.chsservice\</RelPath>
+      <UpdateFromURL>http://intra/ChoateAppServices/chsservice.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>cmClassification_intra_chsservice_CHSService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="services\" />
+    <Folder Include="wsServices\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>28470</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:28470/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
